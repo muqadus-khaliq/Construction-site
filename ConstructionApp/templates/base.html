@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        {% load static %}       
+           <!-- Mobile Specific Meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <!-- Custom Fonts -->
+        <link rel="stylesheet" href="{% static 'custom-font/fonts.css' %}" />
+        <!-- Bootstrap -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
+        <!-- custom-style -->
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}"/>
+
+         <!-- style -->
+        <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+        <!-- Fancybox -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.fancybox.css?v=2.1.5' %}" media="screen" /> 
+        <!-- Custom stylesheet -->
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}"/>
+<style type="text/css">
+
+navbar.bootsnav {
+    background: #222533 none repeat scroll 0 0;
+    border: 0 none;
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0; /* Keeps it at the top of the viewport */
+    z-index: 1000; /* Ensure it stays on top of other elements */
+    width: 100%; /* Make sure it stretches across the screen */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+/*dropdown content*/
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #9B870C;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  color:white;
+}
+
+.dropdown-content a:hover {
+  background-color: #9B870C;
+}
+    /* Main Nav */
+nav.navbar.bootsnav {
+    background: #222533 none repeat scroll 0 0;
+    border: 0 none;
+}
+nav.navbar.bootsnav ul.nav > li > a {
+    color: #fff;
+}
+nav.navbar.bootsnav ul.nav > li > a:hover,nav.navbar.bootsnav ul.nav > li > a:focus {
+    color: #aaa;
+}
+.navbar-brand {
+    height: auto;
+    padding: 20px 15px;
+}
+#navbar-menu {
+    display: flex;  
+    margin: 6px 0;
+    list-style: none;  
+    padding: 0;  
+}
+
+#navbar-menu li {
+    margin-right: 20px; /* Adds space between menu items */
+}
+
+#navbar-menu a {
+    color: white; /* Sets text color to white */
+    text-decoration: none; /* Removes underline */
+}
+
+.nav.navbar-nav.menu {
+    float: center;
+}
+.attr-nav {
+    margin: 5px -10px 0 0;
+}
+.attr-nav > ul > li > a {
+    color: #ffcb0f;
+    font-size: 20px;
+}
+.attr-nav > ul > li > a:hover,.attr-nav > ul > li > a:focus {
+    color: #d7a300;
+}
+
+/* Container for the search bar */
+#search {
+    position: relative;
+    display: flex;
+    justify-content: flex-end; /* Align the label and input fields to the right */
+    align-items: center;
+    padding: 10px;
+    width: 90%;
+}
+
+/* Label styling */
+#search label {
+    color: #fff;
+    font-size: 16px;
+    margin-right: 10px;
+    padding-right: 10px;
+}
+
+/* Styling for the input field */
+#search-field {
+    border: 2px solid #ffcb0f; /* Yellow border */
+    padding: 8px 12px;
+    font-size: 14px;
+    width: 250px;
+    outline: none;
+    transition: border-color 0.3s ease; /* Transition effect for border on focus */
+}
+
+#search-field:focus {
+    border-color: #ffcb0f; /* Border color on focus */
+}
+
+/* Styling for the search button */
+.search-button {
+    background-color: #ffcb0f; /* Yellow background */
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+
+.search-button:hover {
+    background-color: #d7a300; /* Darker yellow on hover */
+}
+
+/* Styling for the blinking effect (if you want it to blink) */
+.blink {
+    animation: blink-animation 1s steps(3, start) infinite;
+}
+
+
+
+@keyframes blink-animation {
+    2% { opacity: 0; }
+}
+
+
+</style>
+
+     </head>
+    <body>
+        <!-- Header -->
+        <header>
+            <!-- Top Navbar -->
+            <div class="top_nav">
+                <div class="container">
+                     <div id="user-info">
+        {% if user.is_authenticated %}
+            <p>Welcome, {{ user.username }}!</p>
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Sign Up</a>
+        {% endif %}
+       
+                    <ul class="list-inline social_icon">
+                        <li><a href="https://www.facebook.com/profile.php?id=100094389627405"><span class="fa fa-facebook"></span></a></li>
+                        <li><a href="https://www.instagram.com/muqadus8805/"><span class="fa fa-instagram"></span></a></li>
+
+                        
+                        <li><a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile"><span class="fa fa-linkedin"></span></a></li>
+                        <li><a href="https://www.youtube.com/"><span class="fa fa-youtube"></span></a></li>
+                    </ul> 
+                   
+                </div>
+                </div>
+            </div><!-- Top Navbar end -->
+
+            <!-- Navbar -->
+            <nav class="navbar bootsnav">
+            
+                <div class="container">
+                    <!-- Atribute Navigation -->
+                     <div id="search">
+        <form action="#" method="get" accept-charset="utf-8">
+          <label for="search-field">SEARCH</label>
+          <input type="text" name="search field" value="Enter search here" id="search-field" class="blink search-field"  />
+          <input type="submit" value="GO!" class="search-button" />
+        </form>
+      </div>
+                    <!-- Header Navigation -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand" href=""><img class="logo" src="{% static 'images/logo.png' %}" alt=""></a>
+                    </div>
+                    <!-- Navigation -->
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                       <ul id="navbar-menu">
+    <li><a class="active" href="{% url 'index' %}">HOME</a></li>
+    
+   <li class="dropdown">
+    <a href="#projects" class="dropbtn">Projects</a>
+    <div class="dropdown-content">
+        {% for project in projects %}
+            <a class="abc" href="{% url 'project_detail' project.id %}">{{ project.title }}</a>
+        {% empty %}
+            <p>No projects available</p>
+        {% endfor %}
+    </div>
+</li>
+
+
+    <li class="dropdown">
+        <a href="#services" class="dropbtn">Services</a>
+        <div class="dropdown-content">
+            {% for service in services %}
+                <a href="{% url 'service_detail' service.id %}">{{ service.name }}</a>
+            {% endfor %}
+        </div>
+    </li>
+
+    <li class="dropdown">
+        <a href="#clients" class="dropbtn">Clients</a>
+        <div class="dropdown-content">
+            {% for client in clients %}
+                <a href="{% url 'client_detail' client.id %}">{{ client.id }}</a>
+            {% endfor %}
+        </div>
+    </li>
+</ul>
+
+       
+  </ul>
+                   </div>
+                </div>   
+            </nav><!-- Navbar end -->
+        </header><!-- Header end -->
+
+
+        
+
+
+        
+ {% block content %}
+
+
+ 
+
+ {% endblock %}
+         
+
+        <!-- Footer -->
+        <footer>
+             
+
+            <!-- Footer bottom -->
+            <div class="footer_bottom text-center">
+                <p class="wow fadeInRight">
+                    Made with 
+                    <i class="fa fa-heart"></i>
+                    by 
+                    <a target="_blank" href="http://bootstrapthemes.co">Bootstrap Themes</a> 
+                    2016. All Rights Reserved
+                </p>
+                <ul class="list-inline footer_social_icon">
+                                <li><a href=""><span class="fa fa-facebook"></span></a></li>
+                                <li><a href=""><span class="fa fa-twitter"></span></a></li>
+                                <li><a href=""><span class="fa fa-youtube"></span></a></li>
+                                <li><a href=""><span class="fa fa-google-plus"></span></a></li>
+                                <li><a href=""><span class="fa fa-linkedin"></span></a></li>
+                            </ul>
+            </div>
+            <!-- Footer bottom end -->
+            
+        </footer><!-- Footer end -->
+
+       <script src="{% static 'js/jquery-1.12.1.min.js' %}"></script>
+<!-- <script src="{% static 'js/bootstrap.min.js' %}"></script> -->
+<script src="{% static 'js/bootsnav.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+    </body> 
+</html> 

@@ -1,0 +1,100 @@
+ nav.navbar.bootsnav {
+    background: #222533 none repeat scroll 0 0;
+    border: 0 none;
+}
+nav.navbar.bootsnav ul.nav > li > a {
+    color: #fff;
+}
+nav.navbar.bootsnav ul.nav > li > a:hover,nav.navbar.bootsnav ul.nav > li > a:focus {
+    color: #aaa;
+}
+.navbar-brand {
+    height: auto;
+    padding: 20px 15px;
+}
+#navbar-menu {
+    display: flex; /* Corrected spelling */
+    margin: 6px 0;
+    list-style: none; /* Removes bullet points */
+    padding: 0; /* Removes default padding */
+}
+
+#navbar-menu li {
+    margin-right: 20px; /* Adds space between menu items */
+}
+
+#navbar-menu a {
+    color: white; /* Sets text color to white */
+    text-decoration: none; /* Removes underline */
+}
+
+.nav.navbar-nav.menu {
+    float: center;
+}
+.attr-nav {
+    margin: 5px -10px 0 0;
+}
+.attr-nav > ul > li > a {
+    color: #ffcb0f;
+    font-size: 20px;
+}
+.attr-nav > ul > li > a:hover,.attr-nav > ul > li > a:focus {
+    color: #d7a300;
+}
+
+/* Container for the search bar */
+#search {
+    position: relative;
+    display: flex;
+    justify-content: flex-end; /* Align the label and input fields to the right */
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+}
+
+/* Label styling */
+#search label {
+    color: #fff;
+    font-size: 16px;
+    margin-right: 10px;
+    padding-right: 10px;
+}
+
+/* Styling for the input field */
+#search-field {
+    border: 2px solid #ffcb0f; /* Yellow border */
+    padding: 8px 12px;
+    font-size: 14px;
+    width: 250px;
+    outline: none;
+    transition: border-color 0.3s ease; /* Transition effect for border on focus */
+}
+
+#search-field:focus {
+    border-color: #ffcb0f; /* Border color on focus */
+}
+
+/* Styling for the search button */
+.search-button {
+    background-color: #ffcb0f; /* Yellow background */
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+}
+
+.search-button:hover {
+    background-color: #d7a300; /* Darker yellow on hover */
+}
+
+/* Styling for the blinking effect (if you want it to blink) */
+.blink {
+    animation: blink-animation 1s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+    50% { opacity: 0; }
+}

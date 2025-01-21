@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ project.title }} - Project Details</title>
+    <link rel="stylesheet" href="{% static 'css/custom_style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .project-info p {
+            margin: 10px 0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .media-section {
+            margin-top: 20px;
+        }
+
+        .media-section h2 {
+            margin-bottom: 10px;
+        }
+
+        .media-gallery img,
+        .media-gallery video {
+            max-width: 100%;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ project.title }}</h1>
+        <div class="project-info">
+            <p><strong>Description:</strong> {{ project.description }}</p>
+            <p><strong>Status:</strong> {{ project.get_status_display }}</p>
+            <p><strong>Start Date:</strong> {{ project.start_date }}</p>
+            <p><strong>End Date:</strong> {{ project.end_date|default:"N/A" }}</p>
+            <p><strong>Budget:</strong> ${{ project.budget }}</p>
+            <p><strong>Client:</strong> {{ project.client.name }}</p>
+            <p><strong>Services:</strong> 
+                {% for service in project.services.all %}
+                    {{ service.name }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+
+        <!-- Media Section -->
+        <div class="media-section">
+            <h2>Images</h2>
+            <div class="media-gallery">
+                {% for image in project.images.all %}
+                    <img src="{{ image.image.url }}" alt="{{ image.caption|default:project.title }}">
+                    {% if image.caption %}
+                        <p>{{ image.caption }}</p>
+                    {% endif %}
+                {% empty %}
+                    <p>No images available for this project.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <a href="{% url 'index' %}#projects" class="back-link">← Back to Project List</a>
+    </div>
+</body>
+</html>
